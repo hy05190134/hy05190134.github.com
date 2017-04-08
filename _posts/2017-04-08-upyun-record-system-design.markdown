@@ -11,7 +11,7 @@ author: hdu.yang
 * 定时任务在定时开始时间之前修改配置会生效；定时任务开始后修改配置则不再生效。
 
 ### 录制系统的总体架构
-* 录制系统由一个 Master 和 多个 Worker 构成，Master 负责接收 OA 发送的流的上下线通知，并根据配置将此转换成录制的开始与结束请求发送给 Worker，由 Worker 进行真正的录制与结束。Worker 负责真正的流的录制和结束，并通过心跳汇报流的状态。每个 Worker 会包括多个录制任务，针对每个录制任务都会生成一个 dump 进程，并与 Worker 保持心跳。
+* 录制系统由一个 `Master` 和 多个 `Worker` 构成，Master 负责接收 `OA` 发送的流的上下线通知，并根据配置将此转换成录制的开始与结束请求发送给 Worker，由 Worker 进行真正的录制与结束。Worker 负责真正的流的录制和结束，并通过心跳汇报流的状态。每个 Worker 会包括多个录制任务，针对每个录制任务都会生成一个 dump 进程，并与 Worker 保持心跳。
 ![架构图](http://upyun-public.b0.upaiyun.com/record_struct.png)
 
 ### Master 的主要功能
@@ -38,8 +38,4 @@ author: hdu.yang
 
 * 接收来自 dump 的心跳，为了防止 dump 假死而导致的实际没有录流的情况，每个创建的 dump 进程都需要每隔 2s 向 Worker 进行心跳汇报，如果 Worker 发现某个 dump 不再进行心跳汇报，会先停掉原来的僵死的 dump，重新创建新的 dump 进程。
 
-* dump 在录制过程中会将录制的结果按照一定的格式分别写入支持时移的 mongo 数据库以及支持回调的 redis 数据库。
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+* dump 在录制过程中会将录制的结果按照一定的格式分别写入支持时移的 `mongo` 数据库以及支持回调的 `redis` 数据库。
