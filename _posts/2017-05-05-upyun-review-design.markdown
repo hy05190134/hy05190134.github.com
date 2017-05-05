@@ -16,7 +16,7 @@ author: hdu.yang
 * dynamic 根据请求的 Uri 以及参数中带的直播域名、开始时间去录制数据库中查询，并生成一个带嵌套 m3u8 的 m3u8 内容，该嵌套的 m3u8 中带有相应的 session
 * 播放器带上 session 再请求一遍，再走到中转的 dynamic 服务时，我们才会吐出带有 ts 的 m3u8 内容
 
-![流程图](http://upyun-public.b0.upaiyun.com/record_review.png)
+![流程图](http://upyun-public.b0.upaiyun.com/record_review.jpg)
 
 ### 总结
-* 。
+* 直播时移回看的功能依赖于录制支持 ts 的格式，有了这个前提，只要动态构造出 m3u8 文件就可以完美支持时移回看功能了。
