@@ -14,5 +14,5 @@ docker run -d --name gitlab-runner --restart always -v /var/run/docker.sock:/var
 ```
 来安装 `gitlab-runner`，`docker run` 后面的参数的具体含义自行查资料，大致含义就是以 `gitlab/gitlab-runner:latest` 镜像为基础以后台守护进程方式创建名字为 `gitlab-runner` 的容器进程并映射两个相应的目录。当上述命令执行成功后，通过 `docker ps `就可以看到相应的 `gitlab-runner` 服务了。
 * 接下来是注册 `gitlab-runner`，通过 `docker exec -it gitlab-runner gitlab-ci-multi-runner register` 命令执行后进入交互模式，输入相应需要的参数则可以完成注册。这里有个坑就是相应的 ci 地址如果是 `http` 的就填写 `http` 的地址，刚开始填写文章中的推荐地址填写了 `https` 就会报错，然后一直在尝试解决这个错误，陷入了困境。
-* 注册成功后会在 `/srv/gitlab-runner/config/config.toml` 中看到刚才注册的 `runner` 配置。
+* 注册成功后会在 `/srv/gitlab-runner/config/config.toml` 或者 `docker exec -it gitlab-runner gitlab-ci-multi-runner list` 中看到刚才注册的 `runner` 配置。
 * 经过上述步骤后，基于 `gitlab-runner` 和 `docker` 环境的集成测试环境就搭建好了。
