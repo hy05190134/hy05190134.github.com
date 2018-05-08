@@ -9,4 +9,4 @@
 * pdf 是由一个个对象组成的，主要对象有 `dictionary`, `array`, `string`, `boolean`, `number`, `stream` 以及特有的对象类型 `indirect`, `indirect` 对象其实就是间接引用对象，一旦需要解析间接引用，文件的偏移就会反复在文件内游动。从 `root` 对象一直往下递归解析就可以将整个 pdf 解析完全，不过针对文本提取不需要解析到最底层。
 
 ### PDF 文本提取
-* 实际上，pdf 由多个 page 组成，而每个 page 包含 pageResource，pageResource 下面包含 Contents 以及 Font，通过 Contents 可以提取到字节流，而通过 Font 可以提取到文本的格式以及编码信息(font encoding)。一般情况下，如果 font 包含 ToUnicode，则直接通过 ToUnicode 进行映射查找；否则如果 font 不是 Type0(Type0 是 composite font，其他的几种 font 则是 simple font)，则通过预定义的 simple encoding（例如 WinAnsiEncodingUtf8 等） 以及 differences 数组来获取；否则如果是 font0 并且是属于几十种 Adobe 定义的 encoding 这一的话，则通过 Register-Ordering-UCS 来进行最后的映射获取。
+* 实际上，pdf 由多个 page 组成，而每个 page 包含 pageResource，pageResource 下面包含 Contents 以及 Font，通过 Contents 可以提取到字节流，而通过 Font 可以提取到文本的格式以及编码信息(font encoding)。一般情况下，如果 font 包含 ToUnicode，则直接通过 ToUnicode 进行映射查找；否则如果 font 不是 Type0(Type0 是 composite font，其他的几种 font 则是 simple font)，则通过预定义的 simple encoding（例如 WinAnsiEncodingUtf8 等） 以及 differences 数组来获取；否则如果是 font0 并且是属于几十种 Adobe 定义的 encoding 之一的话，则通过 Register-Ordering-UCS 来进行最后的映射获取。
