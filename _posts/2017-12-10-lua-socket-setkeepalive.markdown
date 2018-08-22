@@ -5,7 +5,7 @@
 `2017/12/08 16:02:19 [error] 67954#0: *28897 [lua2]http.lua:809: request_uri(): connection in dubious state, client: 10.10.7.222, server:`
 
 ### 逻辑层代码
- ```
+ ``` lua
  local ok, err = self:set_keepalive()                                                                                                       
  if not ok then                                                                                                                               
      ngx_log(ngx_ERR, err)                                                                                                                   
@@ -17,7 +17,7 @@
 
 第一眼我看到了 `unused`，所以我的第一反应是为什么 `free` 的时候有 `unused` 的数据，后来继续了解了下发现 `free` 的时候有 `unused` 是正常的，因为内存池分配的时候是以一定大小对齐分配的，而使用的内存未必刚好是这么多，因此回收的时候就可能会出现 `unused` 的内存，所以这个是正常现象。在这句日志之前还有两条日志意思是说 `set_keepalive` 前需要检查状态以及关闭 `fd` 的操作，既然都分析到这里了，也只能带着这些日志去源代码里搜索了。
 
-```
+``` cpp
 ngx_log_debug0(NGX_LOG_DEBUG_HTTP, ev->log, 0,
 "lua tcp socket keepalive close handler check stale events");
     n = recv(c->fd, buf, 1, MSG_PEEK);
