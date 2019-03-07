@@ -1,4 +1,9 @@
-## Nginx 的 Connection 的生命周期
+---
+layout: post
+title:  "Nginx 的 Connection 的生命周期"
+date:   2018-09-20 10:03:25 +0800
+author: hdu.yang
+---
 
 ### 我们尝试从一个完整的 Http 处理来解读 Nginx 的 Connection 的生命周期。每个 Http 大致会经过以下几个步骤：
 * `ngx_event_accept` 接受客户端的 TCP 连接。这个处理阶段是对监听 socket 的读请求的响应，并且会在该阶段创建 `ngx_connection_t` 对象，然后每个 Nginx 的监听器会将新的连接对象告知给下一个处理阶段。对于 HTTP 连接来说就是 `ngx_http_init_connection(c)`

@@ -1,4 +1,9 @@
-### lua-resty-lrucache 添加 flush_all 历程
+---
+layout: post
+title:  "lua-resty-lrucache 添加 flush_all 历程"
+date:   2018-01-04 10:03:25 +0800
+author: hdu.yang
+---
 
 ## 起因
 前段时间想给 openresty 开源做点贡献，就去找一些 `lua-resty-xxx` 的 `todo list` 实践，顺便也可以看下项目本身的源码，这样就能带着目的去看源码了。于是顺手找到了 `lua-resty-lrucache` 的工程，这个工程我们之前一直在使用，它是用于 `worker` 内部的 `key-value` 缓存，并且采用简单的 `lru` 策略进行淘汰。

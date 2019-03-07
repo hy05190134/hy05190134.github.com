@@ -1,4 +1,9 @@
-## 基于 gitlab-ci 和 docker 搭建 CI/CD
+---
+layout: post
+title:  "基于 gitlab-ci 和 docker 搭建 CI/CD"
+date:   2018-02-27 10:03:25 +0800
+author: hdu.yang
+---
 
 ### 概述
 * 自动化测试工具对于软件开发来说显得格外重要，特别是针对开发迭代比较频繁的项目来说更有意义。由于目前我们的项目代码都是托管在公司自己搭建的 `gitlab` 上，所以使用 `gitlab-ci` 加 `gitlab-runner` 的方式来搭建持续集成环境比较方便些。由于目前通过 `docker` 方式安装 `gitlab-runner` 具有资源隔离性好，对原有服务器的环境污染少等特点，所以推荐用 `docker` 来进行安装。
