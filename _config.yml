@@ -29,6 +29,9 @@ theme: minima
 gems:
   - jekyll-feed
 
+paginate: 5
+paginate_path: "page:num"
+
 exclude:
   - Gemfile
   - Gemfile.lock
