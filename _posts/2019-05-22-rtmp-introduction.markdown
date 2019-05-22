@@ -23,7 +23,7 @@ author: hdu.yang
 
 |Chunk Basic Header|Chunk Message Header|Extended Timestamp|
 | -----------------|:------------------:| ---------------: |
-| 1-3 byte         | 0,3,5,11 bytes     | 0 or 4 bytes     |
+| 1-3 byte         | 0 or 3 or 5 or 11 bytes | 0 or 4 bytes|
 
 * Rtmp 协议这样设计的目的是为了减少实际传输的数据大小，具体情况需要查看 Rtmp 协议文档
 
