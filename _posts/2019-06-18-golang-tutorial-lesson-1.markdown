@@ -85,4 +85,4 @@ Go 支持 Mac，Linux 以及 Windows 操作系统。你可以从 https://golang.
 
 从 https://golang.org/dll/ 下载安装包后双击开始安装，然后解压到 /usr/local 目录下。这个时候 Go 会被安装在 /usr/local/go 目录下，需要自己将 /usr/local/go/bin 加入到 PATH 环境变量中。
 
-在下一课 Golang 系列教程2: Hello World 中，我们将创建工作目录并且编写我们第一个 Go 程序。请提供有效的反馈与评价，谢谢阅读该教程。
+在下一课 [Golang 系列教程2: Hello World](http://www.hy05190134.com/2019/06/18/golang-tutorial-lesson-2.html) 中，我们将创建工作目录并且编写我们第一个 Go 程序。请提供有效的反馈与评价，谢谢阅读该教程。
